@@ -80,16 +80,16 @@ const App = () => {
             <main className="container mx-auto p-4 pt-20"> 
                 <Routes>
                     {/* Public Routes */}
-                    <Route path="/" element={<JobListPage />} />
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/register" element={<RegisterPage />} />
-                    <Route path="/jobs/:id" element={<JobDetailsPage />} /> 
+                    <Route path="/joblistpage" element={<JobListPage />} />
+                    <Route path="/loginpage" element={<LoginPage />} />
+                    <Route path="/registerpages" element={<RegisterPage />} />
+                    <Route path="/jobsdetailspage" element={<JobDetailsPage />} /> 
 
                     {/* PROTECTED EMPLOYER ROUTES */}
                     <Route element={<ProtectedRoute allowedRoles={['Employer']} />}>
-                        <Route path="/employer/dashboard" element={<EmployerDashboard />} />
-                        <Route path="/employer/job/new" element={<JobForm />} />
-                        <Route path="/employer/job/edit/:id" element={<JobForm />} /> 
+                        <Route path="/empdashboard" element={<EmployerDashboard />} />
+                        <Route path="/jobform" element={<JobForm />} />
+                         
                     </Route>
                     
                     <Route path="*" element={<NotFound />} />
