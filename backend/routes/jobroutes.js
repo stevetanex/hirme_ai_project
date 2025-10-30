@@ -1,29 +1,38 @@
-// backend/routes/jobRoutes.js
 const express = require('express');
-const { getJobs, createJob, updateJob, deleteJob } = require('../controllers/jobcontroller');
-const { protect, authorize } = require('../middleware/auth'); // <-- Import Middleware
+// ⬇️ IMPORT ALL CONTROLLER FUNCTIONS ONCE
+const { 
+    getJobs, 
+    createJob, 
+    updateJob, 
+    deleteJob, 
+    getJobAndRecommendations // <-- From the bonus feature 
+} = require('../controllers/jobController'); 
+
+const { protect, authorize } = require('../middleware/auth'); 
 
 const router = express.Router();
 
-// Public route for browsing, searching, filtering, and pagination
+// ------------------------------------------------------------------
+// PUBLIC ROUTES
+// ------------------------------------------------------------------
+
+// 1. Browse/Search/Filter/Paginate all jobs
 router.get('/', getJobs); 
 
-// Employer routes (Protected by JWT and Employer role check)
+// 2. View single job and get recommendations
+router.get('/:id', getJobAndRecommendations); 
+
+// ------------------------------------------------------------------
+// EMPLOYER ROUTES (Protected by JWT and Employer role check)
+// ------------------------------------------------------------------
+
+// 3. Create Job
 router.post('/', protect, authorize('Employer'), createJob);
+
+// 4. Update Job (Requires ownership check in controller)
 router.put('/:id', protect, authorize('Employer'), updateJob);
+
+// 5. Delete Job (Requires ownership check in controller)
 router.delete('/:id', protect, authorize('Employer'), deleteJob);
 
 module.exports = router;
-// backend/routes/jobRoutes.js (Update)
-
-const { getJobs, createJob, updateJob, deleteJob, getJobAndRecommendations } = require('../controllers/jobcontroller'); // <-- IMPORT NEW FUNCTION
-
-// ... (existing imports and setup)
-
-// Public route to view single job and recommendations
-router.get('/:id', getJobAndRecommendations); // <-- NEW ROUTE DEFINITION
-
-// Public route for browsing, searching, filtering, and pagination
-router.get('/', getJobs); 
-
-// ... (existing Employer routes)
