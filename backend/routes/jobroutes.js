@@ -14,3 +14,16 @@ router.put('/:id', protect, authorize('Employer'), updateJob);
 router.delete('/:id', protect, authorize('Employer'), deleteJob);
 
 module.exports = router;
+// backend/routes/jobRoutes.js (Update)
+
+const { getJobs, createJob, updateJob, deleteJob, getJobAndRecommendations } = require('../controllers/jobcontroller'); // <-- IMPORT NEW FUNCTION
+
+// ... (existing imports and setup)
+
+// Public route to view single job and recommendations
+router.get('/:id', getJobAndRecommendations); // <-- NEW ROUTE DEFINITION
+
+// Public route for browsing, searching, filtering, and pagination
+router.get('/', getJobs); 
+
+// ... (existing Employer routes)

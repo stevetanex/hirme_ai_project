@@ -127,3 +127,41 @@ exports.deleteJob = async (req, res, next) => {
         res.status(500).send('Server Error');
     }
 };
+
+// backend/controllers/jobController.js (Add this section)
+
+// @desc    Get a single job and similar recommendations
+// @route   GET /api/jobs/:id
+// @access  Public
+exports.getJobAndRecommendations = async (req, res, next) => {
+    try {
+        const job = await Job.findById(req.params.id).populate('employer', 'name'); // Populate employer name
+        
+        if (!job) {
+            return res.status(404).json({ success: false, msg: 'Job not found' });
+        }
+
+        // --- Recommendation Logic ---
+        const recommendedJobs = await Job.find({
+            // 1. Find jobs that share skills with the current job
+            skills: { $in: job.skills },
+            // 2. Exclude the current job itself from the results
+            _id: { $ne: job._id } 
+        })
+        .limit(5) // Limit to 5 recommendations
+        .select('title location salaryRange type') // Only fetch necessary fields
+        .sort({ createdAt: -1 }); // Prioritize recent jobs
+
+        res.status(200).json({ 
+            success: true, 
+            data: job,
+            recommendations: recommendedJobs
+        });
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+};
+
+// ... (Other exports like getJobs, createJob, etc.)

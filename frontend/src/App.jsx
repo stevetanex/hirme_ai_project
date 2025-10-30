@@ -60,7 +60,7 @@ import JobForm from './pages/JobForm'; // Used for both Create and Edit
 // Authentication Component
 import ProtectedRoute from './components/auth/ProtectedRoute'; 
 
-const App = () => {
+const app = () => {
     return (
         <Router>
             <Navbar /> 
@@ -90,3 +90,27 @@ const App = () => {
 };
 
 export default App;
+// frontend/src/App.jsx (Add this public route)
+
+// ... existing imports ...
+import JobDetailsPage from './pages/jobdetailspage'; // NEW IMPORT
+
+const App = () => {
+    return (
+        <Router>
+            {/* ... */}
+                <Routes>
+                    {/* Public Routes */}
+                    <Route path="/" element={<JobListPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/register" element={<RegisterPage />} />
+                    
+                    {/* Job Details Route (NEW) */}
+                    <Route path="/jobs/:id" element={<JobDetailsPage />} /> 
+
+                    {/* ... (Protected Employer Routes) ... */}
+                </Routes>
+            {/* ... */}
+        </Router>
+    );
+};
