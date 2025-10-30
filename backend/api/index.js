@@ -4,7 +4,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('../config/db'); // Your existing DB connection
 const cors = require('cors');
-const authRoutes = require('../routes/authroutes');
+const authRoutes = require('../routes/autrRoutes');
 const jobRoutes = require('../routes/jobroutes');
 
 // Load environment variables (Vercel automatically handles this in settings)

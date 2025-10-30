@@ -51,14 +51,14 @@ import NotFound from './pages/NotFound'; // Assuming you have a 404 page
 // Public Pages
 import JobListPage from './pages/joblistpage';
 import LoginPage from './pages/loginpage';
-import RegisterPage from './pages/RegisterPage';
+import RegisterPage from './pages/registerpages';
 
 // Employer Protected Pages
-import EmployerDashboard from './pages/EmployerDashboard';
-import JobForm from './pages/JobForm'; // Used for both Create and Edit
+import EmployerDashboard from './pages/empdashboard';
+import JobForm from './pages/jobform'; // Used for both Create and Edit
 
 // Authentication Component
-import ProtectedRoute from './components/auth/ProtectedRoute'; 
+import ProtectedRoute from './components/auth/protectedroute'; 
 
 const app = () => {
     return (

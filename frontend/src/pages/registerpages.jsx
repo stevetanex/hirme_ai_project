@@ -1,7 +1,7 @@
 // frontend/src/pages/RegisterPage.jsx
 import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import AuthContext from '../context/AuthContext';
+import AuthContext from '../contest/authcontext';
 import axios from 'axios';
 
 const API_BASE_URL = 'http://localhost:5000/api'; // Use your API base URL
