@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import AuthContext from '../contest/authcontext';
 import axios from 'axios';
 
-const API_BASE_URL = 'https://hirme-ai-project-6.onrender.com/api';// Use your API base URL
+const API_BASE_URL = 'https://hirme-ai-project-7.onrender.com/api';// Use your API base URL
 
 const RegisterPage = () => {
     const [formData, setFormData] = useState({

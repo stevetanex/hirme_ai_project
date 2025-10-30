@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../hooks/useauth';
 
-const API_BASE_URL = 'https://hirme-ai-project-6.onrender.com/api';
+const API_BASE_URL = 'https://hirme-ai-project-7.onrender.com/api';
 
 const EmployerDashboard = () => {
     const [jobs, setJobs] = useState([]);

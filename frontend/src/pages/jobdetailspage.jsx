@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 
-const API_BASE_URL = 'https://hireme-ai-api.vercel.app/api/jobs'; // Use your Vercel API endpoint
+const API_BASE_URL = 'https://hirme-ai-project-7.onrender.com/api';// Use your Vercel API endpoint
 
 const JobDetailsPage = () => {
     const { id } = useParams();
