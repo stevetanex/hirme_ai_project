@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000/api/jobs'; 
+const API_BASE_URL = 'https://hirme-ai-project-6.onrender.com/api'; 
 
 const JobForm = () => {
     const { id } = useParams(); // Check if we are in edit mode
