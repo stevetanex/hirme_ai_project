@@ -42,7 +42,7 @@ app.use('/api/auth', authRoutes); // <-- NEW LINE: Attach the auth routes
 // Update backend/server.js
 
 // ... existing imports ...
-const authRoutes = require('./routes/authroutes');
+
 const jobRoutes = require('./routes/jobroutes'); // <-- NEW IMPORT
 
 // ... existing setup ...
