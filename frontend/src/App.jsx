@@ -53,8 +53,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // -----------------------------------------------------------------
 
 // General Imports
-import Navbar from './components/layout/navbar.jsx'; 
-import NotFound from './pages/notfound.jsx'; 
+import Navbar from './components/layout/Navbar.jsx'; 
+import NotFound from './pages/NotFound.jsx'; 
 
 // Public Pages (Using your exact lowercase filenames)
 import JobListPage from './pages/joblistpage.jsx'; 
