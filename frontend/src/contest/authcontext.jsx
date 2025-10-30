@@ -3,7 +3,7 @@ import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
 // Replace with your Render backend base URL
-const API_BASE_URL = 'http://localhost:5000/api'; 
+const API_BASE_URL = 'https://hirme-ai-project-7.onrender.com/api'; // (or whatever your project number is)
 
 const AuthContext = createContext();
 
