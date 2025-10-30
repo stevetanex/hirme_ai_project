@@ -42,25 +42,38 @@
 // ... existing imports ...
 // frontend/src/App.jsx
 
+// frontend/src/App.jsx
+
+// frontend/src/App.jsx
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+// -----------------------------------------------------------------
+// IMPORTS MATCHING YOUR LOWERCASE FILE/FOLDER NAMES
+// -----------------------------------------------------------------
+
 // General Imports
-import Navbar from './components/layout/Navbar'; // Assuming you have a Navbar component
-import NotFound from './pages/NotFound'; // Assuming you have a 404 page
+import Navbar from './components/layout/navbar.jsx'; 
+import NotFound from './pages/notfound.jsx'; 
 
-// Public Pages
-import JobListPage from './pages/joblistpage';
-import LoginPage from './pages/loginpage';
-import RegisterPage from './pages/registerpages';
+// Public Pages (Using your exact lowercase filenames)
+import JobListPage from './pages/joblistpage.jsx'; 
+import LoginPage from './pages/loginpage.jsx';    
+import RegisterPage from './pages/registerpages.jsx'; 
+import JobDetailsPage from './pages/jobdetailspage.jsx'; 
 
-// Employer Protected Pages
-import EmployerDashboard from './pages/empdashboard';
-import JobForm from './pages/jobform'; // Used for both Create and Edit
+// Employer Protected Pages (Using your exact lowercase filenames)
+import EmployerDashboard from './pages/empdashboard.jsx'; 
+import JobForm from './pages/jobform.jsx'; 
 
-// Authentication Component
-import ProtectedRoute from './components/auth/protectedroute'; 
+// Authentication Component (Using your exact lowercase filename)
+import ProtectedRoute from './components/auth/protectedroute.jsx'; 
 
-const app = () => {
+// -----------------------------------------------------------------
+// Main Application Component
+// -----------------------------------------------------------------
+
+const App = () => {
     return (
         <Router>
             <Navbar /> 
@@ -70,18 +83,15 @@ const app = () => {
                     <Route path="/" element={<JobListPage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterPage />} />
-                    
-                    {/* ------------------------------------------- */}
-                    {/* PROTECTED EMPLOYER ROUTES (Nested Routes) */}
-                    {/* All nested <Route> elements inherit the security check from ProtectedRoute */}
+                    <Route path="/jobs/:id" element={<JobDetailsPage />} /> 
+
+                    {/* PROTECTED EMPLOYER ROUTES */}
                     <Route element={<ProtectedRoute allowedRoles={['Employer']} />}>
                         <Route path="/employer/dashboard" element={<EmployerDashboard />} />
                         <Route path="/employer/job/new" element={<JobForm />} />
                         <Route path="/employer/job/edit/:id" element={<JobForm />} /> 
                     </Route>
-                    {/* ------------------------------------------- */}
                     
-                    {/* Fallback route for unmatched paths */}
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </main>
@@ -90,27 +100,3 @@ const app = () => {
 };
 
 export default App;
-// frontend/src/App.jsx (Add this public route)
-
-// ... existing imports ...
-import JobDetailsPage from './pages/jobdetailspage'; // NEW IMPORT
-
-const App = () => {
-    return (
-        <Router>
-            {/* ... */}
-                <Routes>
-                    {/* Public Routes */}
-                    <Route path="/" element={<JobListPage />} />
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/register" element={<RegisterPage />} />
-                    
-                    {/* Job Details Route (NEW) */}
-                    <Route path="/jobs/:id" element={<JobDetailsPage />} /> 
-
-                    {/* ... (Protected Employer Routes) ... */}
-                </Routes>
-            {/* ... */}
-        </Router>
-    );
-};
