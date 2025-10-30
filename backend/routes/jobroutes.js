@@ -6,7 +6,7 @@ const {
     updateJob, 
     deleteJob, 
     getJobAndRecommendations // <-- From the bonus feature 
-} = require('../controllers/jobController'); 
+} = require('../controllers/jobcontroller'); 
 
 const { protect, authorize } = require('../middleware/auth'); 
 
